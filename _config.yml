@@ -3,7 +3,7 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: 276970789 的个人博客
+title: Liam's Blog
 subtitle: 记录技术思考与项目实践
 description: 面向长期积累的个人博客，记录技术方案、项目复盘和个人思考。
 keywords:
@@ -11,7 +11,7 @@ keywords:
   - AI
   - 项目复盘
   - 面试思考
-author: 276970789
+author: Liam
 language: zh-CN
 timezone: Asia/Shanghai
 
