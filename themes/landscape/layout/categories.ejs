@@ -1,0 +1,14 @@
+<section class="archive-page">
+  <h1 class="page-title"><%= __('category') %></h1>
+  <% if (site.categories && site.categories.length){ %>
+    <div class="category-index-wrap">
+      <%- list_categories({
+        show_count: true,
+        class: 'category-index-list',
+        style: 'none'
+      }) %>
+    </div>
+  <% } else { %>
+    <p class="category-empty">No categories yet.</p>
+  <% } %>
+</section>

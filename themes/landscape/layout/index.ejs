@@ -1,0 +1,8 @@
+<%- partial('_partial/home-hero') %>
+<section class="home-stream" aria-labelledby="home-stream-title">
+  <header class="home-stream-header">
+    <h2 id="home-stream-title">Latest Writing</h2>
+    <a href="<%- url_for('/archives') %>">View all posts</a>
+  </header>
+  <%- partial('_partial/archive', {expand: true, index: true}) %>
+</section>

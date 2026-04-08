@@ -1,0 +1,330 @@
+// ===== ARTICLES — reading-optimized layout =====
+
+.article
+  max-width: var(--reading-max-width)
+  margin: 0 0 var(--space-8)
+  padding: 0 0 var(--space-8)
+  border-bottom: 1px solid var(--color-border)
+  &:last-of-type
+    border-bottom: none
+    margin-bottom: 0
+    padding-bottom: 0
+
+.article-inner
+  overflow: hidden
+
+.article-meta
+  display: flex
+  align-items: center
+  gap: var(--space-3)
+  margin-bottom: var(--space-4)
+
+.article-date
+  font-size: var(--text-sm)
+  color: var(--color-text-muted)
+  font-variant-numeric: tabular-nums
+  font-feature-settings: "tnum"
+
+.article-category
+  font-size: var(--text-sm)
+  color: var(--color-text-muted)
+  &:before
+    content: "·"
+    margin-right: var(--space-3)
+
+.article-category-link
+  color: var(--color-text-muted)
+  text-decoration: none
+  &:hover
+    color: var(--color-text-secondary)
+
+.article-header
+  padding: 0
+  margin-bottom: var(--space-5)
+
+// Article title — display serif for impact
+.article-title
+  text-decoration: none
+  font-family: var(--font-display)
+  font-size: var(--text-2xl)
+  font-weight: 400
+  font-style: normal
+  color: var(--color-text)
+  line-height: var(--leading-tight)
+  letter-spacing: var(--tracking-tight)
+  display: block
+  transition: color 0.15s
+
+// On post pages, larger fluid title
+.article-full .article-title,
+.post .article-title
+  font-size: clamp(1.75rem, 4vw, 2.5rem)
+
+a.article-title
+  &:hover
+    color: var(--color-text-secondary)
+    text-decoration: none
+
+.article-entry
+  color: var(--color-text)
+  font-family: var(--font-body)
+  font-size: var(--text-base)
+  line-height: var(--leading-body)
+  // Chinese text reads better with slightly more line-height
+  word-break: break-word
+  overflow-wrap: break-word
+  p, table
+    line-height: var(--leading-body)
+    margin: 0 0 1.4em
+  h1, h2, h3, h4, h5, h6
+    font-family: var(--font-display)
+    font-weight: 400
+    color: var(--color-text)
+  h1
+    font-size: var(--text-3xl)
+    margin: 2em 0 0.75em
+    line-height: var(--leading-tight)
+    letter-spacing: var(--tracking-tight)
+  h2
+    font-size: var(--text-xl)
+    margin: 1.75em 0 0.6em
+    line-height: var(--leading-snug)
+    letter-spacing: var(--tracking-tight)
+    padding-bottom: 0.4em
+    border-bottom: 1px solid var(--color-border)
+  h3
+    font-size: calc(var(--text-base) * 1.125)
+    font-family: var(--font-body)
+    font-weight: 700
+    margin: 1.5em 0 0.5em
+    line-height: var(--leading-snug)
+  h4, h5, h6
+    font-size: var(--text-base)
+    font-family: var(--font-body)
+    font-weight: 600
+    margin: 1.25em 0 0.4em
+  a
+    color: var(--color-link)
+    text-decoration: underline
+    text-underline-offset: 2px
+    text-decoration-color: var(--color-border)
+    transition: color 0.15s, text-decoration-color 0.15s
+    &:hover
+      color: var(--color-link-hover)
+      text-decoration-color: var(--color-accent)
+      text-decoration: underline
+  ul, ol, dl
+    margin: 0 0 1.4em
+    padding-left: 1.5em
+  li
+    margin-bottom: 0.4em
+    line-height: 1.8
+  img, video
+    max-width: 100%
+    height: auto
+    display: block
+    margin: var(--space-7) auto
+    border-radius: 4px
+  iframe
+    border: none
+  table
+    width: 100%
+    border-collapse: collapse
+    border-spacing: 0
+    font-size: 0.9375rem
+    margin: var(--space-6) 0
+  th
+    font-weight: 600
+    border-bottom: 2px solid var(--color-border)
+    padding: var(--space-3) var(--space-4)
+    text-align: left
+  td
+    border-bottom: 1px solid var(--color-border)
+    padding: var(--space-3) var(--space-4)
+  blockquote
+    margin: var(--space-6) 0
+    padding: var(--space-4) var(--space-5)
+    border-left: 3px solid var(--color-accent)
+    font-style: italic
+    color: var(--color-text-secondary)
+    font-size: 1.0625rem
+    line-height: 1.75
+    footer
+      font-size: 0.875rem
+      margin-top: var(--space-3)
+      font-style: normal
+      color: var(--color-text-muted)
+      cite:before
+        content: "— "
+  code
+    font-family: var(--font-mono)
+    font-size: 0.875em
+    background: var(--color-code-bg)
+    padding: 2px 6px
+    border-radius: 4px
+    color: var(--color-text)
+    font-feature-settings: "calt" 1, "liga" 1
+
+// "Read More" — minimal text link, not a pill button
+.article-more-link
+  margin-top: var(--space-5)
+  a
+    display: inline-flex
+    align-items: center
+    gap: 4px
+    font-size: 0.875rem
+    font-weight: 500
+    color: var(--color-text-secondary)
+    text-decoration: none
+    transition: color 0.15s
+    &:after
+      content: "→"
+      display: inline-block
+      transition: transform 0.15s
+    &:hover
+      color: var(--color-accent)
+      text-decoration: none
+      &:after
+        transform: translateX(3px)
+
+.article-footer
+  display: flex
+  align-items: center
+  justify-content: space-between
+  flex-wrap: wrap
+  gap: var(--space-3)
+  font-size: 0.8125rem
+  border-top: 1px solid var(--color-border)
+  padding-top: var(--space-5)
+  margin: var(--space-6) 0 0
+  color: var(--color-text-muted)
+  a
+    color: var(--color-text-muted)
+    text-decoration: none
+    &:hover
+      color: var(--color-text-secondary)
+
+.article-tag-list
+  display: flex
+  flex-wrap: wrap
+  gap: var(--space-2)
+  list-style: none
+  margin: 0
+  padding: 0
+
+.article-tag-list-item
+  float: none
+  margin: 0
+
+.article-tag-list-link
+  font-size: 0.75rem
+  color: var(--color-text-muted)
+  text-decoration: none
+  &:before
+    content: "#"
+  &:hover
+    color: var(--color-text-secondary)
+
+.article-comment-link
+  float: none
+  &:before
+    padding-right: 4px
+
+// Article navigation (prev/next)
+#article-nav
+  display: grid
+  grid-template-columns: 1fr 1fr
+  gap: var(--space-5)
+  margin: var(--space-8) 0
+  &:before
+    display: none
+  @media mq-mobile
+    grid-template-columns: 1fr
+
+.article-nav-link-wrap
+  text-decoration: none
+  color: var(--color-text-secondary)
+  display: flex
+  flex-direction: column
+  gap: var(--space-2)
+  padding: var(--space-5)
+  border: 1px solid var(--color-border)
+  border-radius: 8px
+  transition: border-color 0.18s ease-out, background-color 0.18s ease-out, color 0.18s ease-out
+  box-sizing: border-box
+  width: 100%
+  float: none
+  margin-top: 0
+  text-align: left
+  text-shadow: none
+  &:hover
+    border-color: var(--color-accent)
+    background: var(--color-accent-subtle)
+    color: var(--color-text)
+
+#article-nav-newer
+  float: none
+  text-align: left
+  padding-right: 0
+  @media mq-normal
+    float: none
+    width: auto
+    text-align: left
+
+#article-nav-older
+  float: none
+  text-align: left
+  padding-left: 0
+  @media mq-normal
+    float: none
+    width: auto
+    text-align: left
+
+.article-nav-caption
+  text-transform: uppercase
+  letter-spacing: 0.08em
+  color: var(--color-text-muted)
+  font-size: 0.6875rem
+  font-weight: 600
+  line-height: 1
+
+.article-nav-title
+  font-size: 0.9375rem
+  font-weight: 500
+  line-height: 1.4
+  color: var(--color-text)
+  margin-top: 0
+
+.article-gallery
+  background: var(--color-footer-bg)
+  position: relative
+
+.article-gallery-photos
+  position: relative
+  overflow: hidden
+
+.article-gallery-img
+  display: none
+  max-width: 100%
+  &:first-child
+    display: block
+  &.loaded
+    position: absolute
+    display: block
+  img
+    display: block
+    max-width: 100%
+    margin: 0 auto
+
+.article-type-page
+  border-bottom: none
+  margin-bottom: 0
+  padding-bottom: 0
+  .article-header
+    margin-bottom: var(--space-6)
+  .article-title
+    font-size: clamp(2rem, 4vw, 2.8rem)
+  .article-entry
+    font-size: 1.0625rem
+  .article-entry p:first-child
+    margin-top: 0
