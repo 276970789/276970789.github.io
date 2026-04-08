@@ -1,0 +1,19 @@
+menu:
+  Home: /
+  Archives: /archives
+  Categories: /categories
+  About: /about
+
+rss:
+subtitle: 记录技术思考与项目实践
+links:
+  github: https://github.com/276970789
+
+widgets:
+  - category
+  - archive
+  - recent_posts
+
+archive_type: monthly
+show_count: false
+recent_posts_limits: 5
