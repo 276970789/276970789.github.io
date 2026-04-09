@@ -26,7 +26,13 @@ const posts = [];
 
 for (const file of files) {
   const filePath = path.join(POSTS_DIR, file);
-  const content = fs.readFileSync(filePath, 'utf-8');
+  let content = fs.readFileSync(filePath, 'utf-8');
+  
+  // Normalize Typora's *** delimiters to standard --- for gray-matter
+  if (content.startsWith('***\n') || content.startsWith('***\r\n')) {
+    content = content.replace(/^\*\*\*\r?\n/, '---\n');
+    content = content.replace(/\r?\n\*\*\*\r?\n/, '\n---\n');
+  }
   
   const parsed = matter(content);
   const slug = file.replace(/\.md$/, '');
