@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ChevronDown, ChevronRight } from 'lucide-react';
+import { ChevronRight } from 'lucide-react';
 import { PostSummary } from '../types';
 
 export function Categories() {
@@ -88,17 +88,21 @@ export function Categories() {
                   className="flex items-center gap-3 text-2xl md:text-3xl font-bold text-accent hover:opacity-80 transition-opacity mb-8"
                 >
                   {category}
-                  {isExpanded ? (
-                    <ChevronDown size={32} strokeWidth={3} />
-                  ) : (
-                    <ChevronRight size={32} strokeWidth={3} />
-                  )}
+                  <ChevronRight 
+                    size={32} 
+                    strokeWidth={3} 
+                    className={`transition-transform duration-300 ${isExpanded ? 'rotate-90' : 'rotate-0'}`} 
+                  />
                 </button>
                 
-                {isExpanded && (
-                  <ul className="space-y-8 ml-4 md:ml-8">
+                <div 
+                  className={`grid transition-all duration-300 ease-in-out ${
+                    isExpanded ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'
+                  }`}
+                >
+                  <ul className="space-y-8 ml-4 md:ml-8 overflow-hidden">
                     {groupedPosts[category].map(post => (
-                      <li key={post.id}>
+                      <li key={post.id} className="first:mt-2 last:mb-2">
                         <Link 
                           to={`/post/${post.slug}`}
                           className="text-lg md:text-xl text-gray-800 hover:text-accent transition-colors block"
@@ -108,7 +112,7 @@ export function Categories() {
                       </li>
                     ))}
                   </ul>
-                )}
+                </div>
               </div>
             );
           })
