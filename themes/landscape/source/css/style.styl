@@ -1,312 +1,282 @@
-@import "nib"
-@import "_variables"
-@import "_util/mixin"
-@import "_util/grid"
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap');
 
-global-reset()
+:root {
+  --bg-color: #F3F2EE;
+  --text-main: #111111;
+  --text-muted: #555555;
+  --accent: #D96C4A;
+  --border-color: rgba(0, 0, 0, 0.1);
 
-// ===== CSS Custom Properties =====
-:root
-  // Spacing scale
-  --space-1: 4px
-  --space-2: 8px
-  --space-3: 12px
-  --space-4: 16px
-  --space-5: 24px
-  --space-6: 32px
-  --space-7: 48px
-  --space-8: 64px
-  --space-9: 96px
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Helvetica Neue", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --font-serif: "Playfair Display", "Georgia", "Noto Serif SC", "Songti SC", "STSong", serif;
 
-  // Layout
-  --header-height: 64px
-  --content-max-width: 1120px
-  --reading-max-width: 780px
-  --site-padding: 28px
+  --max-width: 800px;
+}
 
-  // ===== LIGHT MODE COLORS =====
-  // Warm cream paper — not pure white, not cold gray
-  --color-bg: oklch(98% 0.008 75)
-  --color-surface: oklch(100% 0 0)
-  --color-border: oklch(90% 0.006 75)
-  --color-border-strong: oklch(80% 0.009 75)
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-  // Text — warm near-black, never pure #000
-  --color-text: oklch(14% 0.012 75)
-  --color-text-secondary: oklch(42% 0.013 75)
-  --color-text-muted: oklch(60% 0.010 75)
+body {
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 
-  // Accent — warm amber/ochre (literary, editorial, distinctly not AI-blue)
-  --color-accent: oklch(62% 0.15 65)
-  --color-accent-dim: oklch(72% 0.12 70)
-  --color-accent-subtle: oklch(94% 0.05 75)
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s ease, opacity 0.2s ease;
+}
 
-  // Links — understated dark, hover reveals accent warmth
-  --color-link: oklch(14% 0.012 75)
-  --color-link-hover: oklch(62% 0.15 65)
-  --color-hover: oklch(95% 0.007 75)
+a:hover {
+  opacity: 0.7;
+}
 
-  // Surfaces
-  --color-code-bg: oklch(95% 0.008 75)
-  --color-footer-bg: oklch(11% 0.01 75)
-  --color-header-bg: oklch(98% 0.008 75 / 0.94)
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 24px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
 
-  // Shadows — warm-tinted
-  --shadow-sm: 0 1px 2px oklch(50% 0.01 75 / 0.08)
-  --shadow-md: 0 2px 10px oklch(50% 0.01 75 / 0.10)
+/* Header */
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 32px 0;
+  border-bottom: 1px solid var(--border-color);
+  margin-bottom: 48px;
+}
 
-  // Typography
-  --font-display: "Instrument Serif", "Noto Serif SC", Georgia, serif
-  --font-body: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Source Han Sans SC", "Noto Sans SC", "Helvetica Neue", Arial, sans-serif
-  --font-mono: "JetBrains Mono", "Fira Code", "Source Code Pro", Consolas, Monaco, monospace
+.site-title {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
 
-  // Type scale (rem — respects user browser settings)
-  --text-xs: 0.75rem
-  --text-sm: 0.8125rem
-  --text-base: 1rem
-  --text-lg: 1.1875rem
-  --text-xl: 1.375rem
-  --text-2xl: 1.875rem
-  --text-3xl: 2rem
-  --text-4xl: 2.75rem
+.site-nav {
+  display: flex;
+  gap: 32px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--text-main);
+}
 
-  // Line heights
-  --leading-tight: 1.2
-  --leading-snug: 1.35
-  --leading-body: 1.8
-  --leading-loose: 2
+.site-nav a {
+  opacity: 0.6;
+}
 
-  // Letter spacing
-  --tracking-tight: -0.02em
-  --tracking-normal: 0
-  --tracking-wide: 0.05em
-  --tracking-caps: 0.08em
+.site-nav a:hover {
+  opacity: 1;
+}
 
-// ===== DARK MODE =====
-@media (prefers-color-scheme: dark)
-  :root
-    // Warm dark — like ink on aged paper, not cold tech-dark
-    --color-bg: oklch(13% 0.010 75)
-    --color-surface: oklch(17% 0.010 75)
-    --color-border: oklch(26% 0.010 75)
-    --color-border-strong: oklch(38% 0.012 75)
+/* Main */
+.site-main {
+  flex: 1;
+}
 
-    // Text — warm off-white
-    --color-text: oklch(92% 0.006 75)
-    --color-text-secondary: oklch(68% 0.009 75)
-    --color-text-muted: oklch(50% 0.008 75)
+/* Hero */
+.hero {
+  padding: 64px 0 120px;
+  animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
 
-    // Accent — brighter amber for dark backgrounds (WCAG contrast maintained)
-    --color-accent: oklch(74% 0.14 65)
-    --color-accent-dim: oklch(65% 0.12 68)
-    --color-accent-subtle: oklch(20% 0.04 75)
+.hero h1 {
+  font-family: var(--font-serif);
+  font-size: clamp(3.5rem, 9vw, 6.5rem);
+  font-weight: 500;
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+  color: var(--text-main);
+  max-width: 14ch;
+}
 
-    // Links
-    --color-link: oklch(88% 0.006 75)
-    --color-link-hover: oklch(74% 0.14 65)
-    --color-hover: oklch(22% 0.009 75)
+/* Post List */
+.post-list {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 80px;
+  animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.1s forwards;
+  opacity: 0;
+}
 
-    // Surfaces
-    --color-code-bg: oklch(19% 0.012 75)
-    --color-footer-bg: oklch(8% 0.008 75)
-    --color-header-bg: oklch(13% 0.010 75 / 0.94)
+.post-item {
+  padding: 48px 0;
+  border-top: 1px solid var(--border-color);
+}
 
-    // Shadows — subtle on dark
-    --shadow-sm: 0 1px 3px oklch(0% 0 0 / 0.3)
-    --shadow-md: 0 2px 12px oklch(0% 0 0 / 0.4)
+.post-meta {
+  display: flex;
+  gap: 16px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+}
 
+.post-item .post-title {
+  font-family: var(--font-serif);
+  font-size: 2.25rem;
+  font-weight: 500;
+  line-height: 1.15;
+  margin-bottom: 16px;
+  letter-spacing: -0.02em;
+}
 
-input, button
-  margin: 0
-  padding: 0
-  &::-moz-focus-inner
-    border: 0
-    padding: 0
+.post-item .post-excerpt {
+  color: var(--text-muted);
+  font-size: 1.125rem;
+  line-height: 1.6;
+}
 
-// ===== GLOBAL POLISH =====
+.post-tags {
+  display: flex;
+  gap: 8px;
+}
 
-// Smooth scroll
-html
-  scroll-behavior: smooth
+.post-tags a:before {
+  content: "#";
+}
 
-html, body, #container
-  height: 100%
+/* Post Full */
+.post-full {
+  animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
 
-// Text selection — accent-tinted highlight
-::selection
-  background: var(--color-accent-subtle)
-  color: var(--color-text)
+.post-full .post-header {
+  margin-bottom: 64px;
+  padding-top: 40px;
+}
 
-// Focus: only show ring on keyboard navigation, not mouse
-:focus
-  outline: none
+.post-full .post-title {
+  font-family: var(--font-serif);
+  font-size: clamp(3rem, 6vw, 4.5rem);
+  font-weight: 500;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  margin-bottom: 32px;
+}
 
-:focus-visible
-  outline: 2px solid var(--color-accent)
-  outline-offset: 2px
-  border-radius: 3px
+.post-full .post-meta {
+  margin-bottom: 0;
+}
 
-.skip-link
-  position: absolute
-  top: var(--space-3)
-  left: var(--space-3)
-  z-index: 200
-  padding: var(--space-2) var(--space-3)
-  border-radius: 6px
-  background: var(--color-text)
-  color: var(--color-bg)
-  text-decoration: none
-  transform: translateY(-160%)
-  transition: transform 0.18s ease-out
-  &:focus
-    transform: translateY(0)
+.post-content {
+  font-size: 1.1875rem;
+  line-height: 1.7;
+  color: var(--text-main);
+  padding-bottom: 80px;
+}
 
-.visually-hidden
-  position: absolute
-  width: 1px
-  height: 1px
-  padding: 0
-  margin: -1px
-  overflow: hidden
-  clip: rect(0, 0, 0, 0)
-  white-space: nowrap
-  border: 0
+.post-content h2 {
+  font-family: var(--font-serif);
+  font-size: 2.5rem;
+  margin: 64px 0 32px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
 
-// HR
-hr
-  border: none
-  border-top: 1px solid var(--color-border)
-  margin: var(--space-7) 0
+.post-content h3 {
+  font-family: var(--font-serif);
+  font-size: 1.75rem;
+  margin: 48px 0 24px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
 
-// Reduced motion
-@media (prefers-reduced-motion: reduce)
-  *, *::before, *::after
-    animation-duration: 0.01ms !important
-    animation-iteration-count: 1 !important
-    transition-duration: 0.01ms !important
-    scroll-behavior: auto !important
+.post-content p {
+  margin-bottom: 24px;
+}
 
-body
-  background: radial-gradient(circle at 10% 0%, oklch(88% 0.04 75 / 0.42) 0%, transparent 38%), var(--color-bg)
-  color: var(--color-text)
-  font-family: var(--font-body)
-  font-size: var(--text-base)
-  line-height: var(--leading-body)
-  font-kerning: normal
-  font-feature-settings: "kern" 1, "liga" 1
-  -webkit-text-size-adjust: 100%
-  -webkit-font-smoothing: antialiased
-  -moz-osx-font-smoothing: grayscale
+.post-content ul, .post-content ol {
+  margin-bottom: 24px;
+  padding-left: 24px;
+}
 
-// Reading-optimized container
-.outer
-  max-width: var(--content-max-width)
-  margin: 0 auto
-  padding: 0 var(--site-padding)
-  box-sizing: border-box
-  @media (max-width: 767px)
-    padding: 0 16px
+.post-content li {
+  margin-bottom: 8px;
+}
 
-.inner
-  width: 100%
+.post-content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin: 32px 0;
+}
 
-.left, .alignleft
-  float: left
+.post-content pre, .post-content code {
+  background: #F0EFEA;
+  border-radius: 4px;
+  font-family: monospace;
+  font-size: 0.9em;
+}
 
-.right, .alignright
-  float: right
+.post-content pre {
+  padding: 16px;
+  overflow-x: auto;
+  margin-bottom: 24px;
+}
 
-.clear
-  clear: both
+/* Pagination */
+.pagination {
+  display: flex;
+  gap: 16px;
+  padding: 40px 0 80px;
+  font-size: 0.9rem;
+}
 
-#container
-  position: relative
+.pagination .current {
+  font-weight: 500;
+  color: var(--text-main);
+}
 
-.mobile-nav-on
-  overflow: hidden
+/* Archive */
+.archive-header {
+  padding: 80px 0 64px;
+  animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
 
-#wrap
-  height: 100%
-  width: 100%
-  position: absolute
-  top: 0
-  left: 0
-  transition: left 0.2s cubic-bezier(0.4, 0, 0.2, 1)
-  z-index: 1
-  background: var(--color-bg)
-  .mobile-nav-on &
-    left: mobile-nav-width
+.page-title {
+  font-family: var(--font-serif);
+  font-size: clamp(3.5rem, 8vw, 5.5rem);
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+}
 
-// Full-width main — no sidebar columns
-#main
-  width: 100%
-  padding-top: var(--space-8)
-  padding-bottom: var(--space-9)
-  position: relative
+/* Footer */
+.site-footer {
+  padding: 48px 0;
+  border-top: 1px solid var(--border-color);
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  display: flex;
+  justify-content: space-between;
+}
 
-@import "_extend"
-@import "_partial/header"
-@import "_partial/home"
-@import "_partial/article"
-@import "_partial/comment"
-@import "_partial/archive"
-@import "_partial/footer"
-@import "_partial/highlight"
-@import "_partial/mobile"
-
-if sidebar
-  @import "_partial/sidebar"
-
-// ===== POLISH OVERRIDES =====
-
-// Article tag chips — more refined than raw "#tag" text
-.article-tag-list-link
-  display: inline-flex
-  align-items: center
-  padding: 2px var(--space-2)
-  border-radius: 4px
-  background: var(--color-code-bg)
-  color: var(--color-text-muted)
-  font-size: var(--text-xs)
-  letter-spacing: 0.01em
-  transition: background-color 0.15s, color 0.15s
-  &:before
-    content: "#"
-    margin-right: 1px
-    opacity: 0.6
-  &:hover
-    background: var(--color-accent-subtle)
-    color: var(--color-text-secondary)
-
-// Ensure images don't overflow narrow screens
-img
-  max-width: 100%
-  height: auto
-
-// Ensure tables don't cause horizontal scroll on mobile
-.article-entry table
-  display: block
-  overflow-x: auto
-  -webkit-overflow-scrolling: touch
-
-// Archive page: label before the list
-.archives-wrap:first-child .archive-year-wrap
-  margin-top: 0
-
-// Page title for archive/category pages
-.page-title
-  max-width: var(--reading-max-width)
-  font-family: var(--font-display)
-  font-size: var(--text-3xl)
-  font-weight: 400
-  letter-spacing: var(--tracking-tight)
-  color: var(--color-text)
-  margin-bottom: var(--space-8)
-  line-height: var(--leading-tight)
-
-// Comment section spacing
-#comments
-  max-width: var(--reading-max-width)
-  margin-top: var(--space-8)
-  padding-top: var(--space-7)
-  border-top: 1px solid var(--color-border)
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-background text-text font-sans antialiased;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+@layer components {
+  .neo-brutalism-card {
+    @apply border-[3px] border-primary rounded-sm overflow-hidden bg-background shadow-[4px_4px_0px_0px_rgba(30,30,30,1)] transition-transform hover:-translate-y-1 hover:-translate-x-1 hover:shadow-[8px_8px_0px_0px_rgba(30,30,30,1)];
+  }
+  
+  .neo-brutalism-header {
+    @apply bg-cardHeader text-cardHeaderContent px-4 py-3 border-b-[3px] border-primary flex justify-between items-center;
+  }
+
+  .neo-brutalism-btn {
+    @apply font-mono text-sm px-4 py-2 border-[3px] border-primary rounded-sm bg-background text-text transition-all hover:bg-accent hover:text-white hover:shadow-[2px_2px_0px_0px_rgba(30,30,30,1)] active:translate-y-1 active:translate-x-1 active:shadow-none;
+  }
+
+  .prose-custom {
+    @apply text-text max-w-none;
+  }
+  
+  .prose-custom h1, .prose-custom h2, .prose-custom h3, .prose-custom h4 {
+    @apply font-bold text-primary mt-8 mb-4;
+  }
+  
+  .prose-custom p {
+    @apply leading-[1.75] mb-6;
+  }
+
+  .prose-custom a {
+    @apply text-accent font-medium hover:underline decoration-2 underline-offset-4;
+  }
+
+  .prose-custom img {
+    @apply border-[3px] border-primary rounded-sm shadow-[4px_4px_0px_0px_rgba(30,30,30,1)] my-8;
+  }
+
+  .prose-custom pre {
+    @apply bg-primary text-white p-4 rounded-sm border-[3px] border-primary overflow-x-auto my-6 font-mono text-sm shadow-[4px_4px_0px_0px_rgba(30,30,30,1)];
+  }
+
+  .prose-custom code {
+    @apply bg-gray-200 text-primary px-1.5 py-0.5 rounded-sm font-mono text-sm;
+  }
+  
+  .prose-custom pre code {
+    @apply bg-transparent text-white p-0;
+  }
+  
+  .prose-custom blockquote {
+    @apply border-l-4 border-accent pl-4 italic text-gray-600 my-6 bg-gray-100 py-2 pr-4 rounded-r-sm;
+  }
+  
+  .prose-custom ul {
+    @apply list-disc pl-6 mb-6 leading-[1.75];
+  }
+  
+  .prose-custom ol {
+    @apply list-decimal pl-6 mb-6 leading-[1.75];
+  }
+}

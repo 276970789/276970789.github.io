@@ -1,8 +1,35 @@
-<%- partial('_partial/home-hero') %>
-<section class="home-stream" aria-labelledby="home-stream-title">
-  <header class="home-stream-header">
-    <h2 id="home-stream-title">Latest Writing</h2>
-    <a href="<%- url_for('/archives') %>">View all posts</a>
-  </header>
-  <%- partial('_partial/archive', {expand: true, index: true}) %>
-</section>
+<div class="hero">
+  <h1><%= config.description || 'build thoughtful ai system' %></h1>
+</div>
+<div class="post-list">
+  <% page.posts.each(function(post){ %>
+    <article class="post-item">
+      <div class="post-meta">
+        <time datetime="<%= post.date.toJSON() %>"><%= post.date.format('MMM D, YYYY') %></time>
+        <% if (post.tags && post.tags.length){ %>
+          <span class="post-tags">
+            <% post.tags.each(function(tag){ %>
+              <a href="<%- url_for(tag.path) %>"><%= tag.name %></a>
+            <% }) %>
+          </span>
+        <% } %>
+      </div>
+      <h2 class="post-title">
+        <a href="<%- url_for(post.path) %>"><%= post.title || 'Untitled' %></a>
+      </h2>
+      <div class="post-excerpt">
+        <% if(post.excerpt) { %>
+          <%- post.excerpt %>
+        <% } else { %>
+          <%- strip_html(post.content).substring(0, 160) + '...' %>
+        <% } %>
+      </div>
+    </article>
+  <% }) %>
+</div>
+<div class="pagination">
+  <%- paginator({
+    prev_text: '&larr; Newer',
+    next_text: 'Older &rarr;'
+  }) %>
+</div>

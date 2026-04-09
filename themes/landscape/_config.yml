@@ -22,13 +22,7 @@ links:
 #  telegram: https://t.me/your_telegram_account
 
 home:
-  kicker: Personal Notes
-  title: Building Thoughtful AI Systems
-  summary: 记录 Agent 相关研究、项目复盘和长期技术判断，关注长期可积累的认知资产，而不只是短期技巧。
-  primary_label: View About
-  primary_link: /about
-  secondary_label: Browse Archives
-  secondary_link: /archives
+  summary: Build thoughtful AI system
 
 profile:
   role: BUPT M.S. Candidate

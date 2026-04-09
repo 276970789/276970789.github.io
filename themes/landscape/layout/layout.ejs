@@ -1,23 +1,31 @@
 <!DOCTYPE html>
 <html lang="<%= config.language || 'en' %>">
-<%- partial('_partial/head') %>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title><%= page.title ? page.title + ' | ' : '' %><%= config.title %></title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="<%- url_for('css/style.css') %>">
+</head>
 <body>
-  <a class="skip-link" href="#main-content">Skip to content</a>
-  <div id="container">
-    <div id="wrap">
-      <%- partial('_partial/header', null, {cache: !config.relative_link}) %>
-      <div class="outer">
-        <main id="main" tabindex="-1">
-          <div id="main-content"><%- body %></div>
-        </main>
-        <% if (theme.sidebar && theme.sidebar !== 'bottom'){ %>
-          <%- partial('_partial/sidebar', null, {cache: !config.relative_link}) %>
-        <% } %>
-      </div>
-      <%- partial('_partial/footer', null, {cache: !config.relative_link}) %>
-    </div>
-    <%- partial('_partial/mobile-nav', null, {cache: !config.relative_link}) %>
-    <%- partial('_partial/after-footer') %>
+  <div class="container">
+    <header class="site-header">
+      <a href="<%- url_for('/') %>" class="site-title"><%= config.title || 'Blog' %></a>
+      <nav class="site-nav">
+        <a href="<%- url_for('/') %>">Home</a>
+        <a href="<%- url_for('/archives') %>">Archives</a>
+        <a href="<%- url_for('/about') %>">About</a>
+      </nav>
+    </header>
+    <main class="site-main">
+      <%- body %>
+    </main>
+    <footer class="site-footer">
+      <div>&copy; <%= new Date().getFullYear() %> <%= config.author || config.title %></div>
+      <div>Built with Hexo</div>
+    </footer>
   </div>
 </body>
 </html>
