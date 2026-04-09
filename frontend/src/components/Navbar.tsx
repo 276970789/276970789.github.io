@@ -37,7 +37,7 @@ export function Navbar() {
           <Link to="/" className="font-bold text-2xl tracking-tighter text-primary flex items-center group font-mono">
             <span className="text-accent group-hover:animate-pulse mr-1">~/</span>
             <span>LIAM</span>
-            <span className="w-2.5 h-6 bg-primary ml-1.5 animate-pulse group-hover:bg-accent transition-colors"></span>
+            <span className="w-1.5 h-6 bg-primary ml-1 animate-pulse group-hover:bg-accent transition-colors"></span>
           </Link>
           <nav className="hidden md:flex items-center gap-6 font-medium text-sm">
             <Link to="/" className="hover:text-accent transition-colors">首页</Link>

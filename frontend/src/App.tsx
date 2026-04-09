@@ -26,7 +26,7 @@ function App() {
         <footer className="border-t-3 border-primary py-8 mt-12 bg-background">
           <div className="max-w-4xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-4">
             <div className="font-bold text-lg text-primary tracking-tight font-mono flex items-center">
-              <span className="text-accent mr-1">~/</span>LIAM<span className="w-2 h-4 bg-primary ml-1 animate-pulse"></span>
+              <span className="text-accent mr-1">~/</span>LIAM<span className="w-1.5 h-4 bg-primary ml-1 animate-pulse"></span>
             </div>
             <div className="flex gap-6 text-sm font-medium">
               <a href="mailto:Gnew2024@bupt.edu.cn" className="hover:text-accent transition-colors">
