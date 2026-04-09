@@ -52,7 +52,7 @@ export function Home() {
               Harness the Chaos.
             </span>
             <span className="block text-transparent bg-clip-text bg-gradient-to-r from-accent via-orange-500 to-accent pb-2">
-              Build the Universal Agent.
+              Build the Universal AI.
             </span>
           </h1>
           
