@@ -45,7 +45,7 @@ export function Home() {
     <div className="space-y-8 animate-in fade-in duration-500">
       <div className="mb-12">
         <h1 className="text-5xl md:text-7xl font-extrabold mb-6 tracking-tighter text-gray-900 leading-tight">
-          Build Thoughtful <br className="hidden md:block" /> AI Systems.
+          Harness the Chaos. <br className="hidden md:block" /> Build the Universal Agent.
         </h1>
         {activeCategory && (
           <div className="flex items-center gap-3 mt-4">
