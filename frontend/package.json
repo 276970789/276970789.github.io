@@ -7,7 +7,7 @@
     "predev": "node scripts/generate-data.js",
     "dev": "vite",
     "prebuild": "node scripts/generate-data.js",
-    "build": "tsc -b && vite build",
+    "build": "tsc -b && vite build && cp dist/index.html dist/404.html",
     "lint": "eslint .",
     "preview": "vite preview",
     "check": "tsc -b --noEmit"
