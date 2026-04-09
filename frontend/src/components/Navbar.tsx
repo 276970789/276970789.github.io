@@ -31,7 +31,8 @@ export function Navbar() {
   };
 
   return (
-    <header className="sticky top-0 z-50 bg-background border-b-3 border-primary">
+    <>
+    <header className="sticky top-0 z-50 bg-background border-b-3 border-primary py-4">
       <div className="max-w-4xl mx-auto px-4 h-16 flex items-center justify-between">
         <div className="flex items-center gap-8">
           <Link to="/" className="font-bold text-2xl tracking-tighter text-primary flex items-center group font-mono">
@@ -105,5 +106,6 @@ export function Navbar() {
         </div>
       </div>
     </header>
+    </>
   );
 }
