@@ -43,21 +43,37 @@ export function Home() {
 
   return (
     <div className="space-y-8 animate-in fade-in duration-500">
-      <div className="mb-12">
-        <h1 className="text-5xl md:text-7xl font-extrabold mb-6 tracking-tighter text-gray-900 leading-tight">
-          Harness the Chaos. <br className="hidden md:block" /> Build the Universal Agent.
-        </h1>
-        {activeCategory && (
-          <div className="flex items-center gap-3 mt-4">
-            <span className="text-gray-600 font-medium">分类过滤:</span>
-            <span className="inline-flex items-center gap-1 px-3 py-1 bg-orange-100 text-accent font-bold rounded-sm border border-orange-200">
-              {activeCategory}
-              <Link to="/" className="hover:bg-orange-200 rounded-full p-0.5 transition-colors">
-                <X size={14} />
-              </Link>
+      <div className="mb-24 relative mt-12 flex flex-col md:flex-row items-center md:items-start justify-between gap-12">
+        <div className="flex-1 relative w-full">
+          <div className="absolute -inset-4 bg-gradient-to-r from-orange-400/20 to-primary/5 blur-3xl -z-10 rounded-full"></div>
+          
+          <h1 className="text-6xl md:text-[5.5rem] font-black tracking-tighter leading-[1.05] relative z-10">
+            <span className="block text-primary mb-2">
+              Harness the Chaos.
             </span>
+            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-accent via-orange-500 to-accent pb-2">
+              Build the Universal Agent.
+            </span>
+          </h1>
+          
+          {/* 装饰性底部线条与闪烁光标 */}
+          <div className="flex items-center gap-4 mt-8">
+            <div className="h-[2px] w-12 bg-accent"></div>
+            <div className="h-2 w-2 bg-primary animate-pulse"></div>
+            <div className="h-[1px] w-full max-w-[200px] bg-gradient-to-r from-gray-300 to-transparent"></div>
           </div>
-        )}
+          {activeCategory && (
+            <div className="flex items-center gap-3 mt-4">
+              <span className="text-gray-600 font-medium">分类过滤:</span>
+              <span className="inline-flex items-center gap-1 px-3 py-1 bg-orange-100 text-accent font-bold rounded-sm border border-orange-200">
+                {activeCategory}
+                <Link to="/" className="hover:bg-orange-200 rounded-full p-0.5 transition-colors">
+                  <X size={14} />
+                </Link>
+              </span>
+            </div>
+          )}
+        </div>
       </div>
 
       <div className="grid gap-8">
