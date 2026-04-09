@@ -41,6 +41,7 @@ export function Navbar() {
             <Link to="/" className="hover:text-accent transition-colors">首页</Link>
             <Link to="/about" className="hover:text-accent transition-colors">关于我</Link>
             <Link to="/archive" className="hover:text-accent transition-colors">归档</Link>
+            <Link to="/categories" className="hover:text-accent transition-colors">分类</Link>
             <Link to="/tags" className="hover:text-accent transition-colors">标签</Link>
           </nav>
         </div>

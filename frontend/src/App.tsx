@@ -5,6 +5,7 @@ import { Post } from './pages/Post';
 import { About } from './pages/About';
 import { Tags } from './pages/Tags';
 import { Archive } from './pages/Archive';
+import { Categories } from './pages/Categories';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/tags" element={<Tags />} />
             <Route path="/archive" element={<Archive />} />
+            <Route path="/categories" element={<Categories />} />
           </Routes>
         </main>
         

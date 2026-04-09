@@ -1,12 +1,13 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { format } from 'date-fns';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, X } from 'lucide-react';
 import { PostSummary } from '../types';
 
 export function Home() {
   const [posts, setPosts] = useState<PostSummary[]>([]);
   const [loading, setLoading] = useState(true);
+  const location = useLocation();
 
   useEffect(() => {
     fetch('/data/posts.json')
@@ -20,6 +21,13 @@ export function Home() {
         setLoading(false);
       });
   }, []);
+
+  const searchParams = new URLSearchParams(location.search);
+  const activeCategory = searchParams.get('category');
+
+  const filteredPosts = activeCategory
+    ? posts.filter(post => post.categories?.includes(activeCategory))
+    : posts;
 
   if (loading) {
     return (
@@ -39,10 +47,21 @@ export function Home() {
         <h1 className="text-5xl md:text-7xl font-extrabold mb-6 tracking-tighter text-gray-900 leading-tight">
           Build Thoughtful <br className="hidden md:block" /> AI Systems.
         </h1>
+        {activeCategory && (
+          <div className="flex items-center gap-3 mt-4">
+            <span className="text-gray-600 font-medium">分类过滤:</span>
+            <span className="inline-flex items-center gap-1 px-3 py-1 bg-orange-100 text-accent font-bold rounded-sm border border-orange-200">
+              {activeCategory}
+              <Link to="/" className="hover:bg-orange-200 rounded-full p-0.5 transition-colors">
+                <X size={14} />
+              </Link>
+            </span>
+          </div>
+        )}
       </div>
 
       <div className="grid gap-8">
-        {posts.map(post => (
+        {filteredPosts.map(post => (
           <article key={post.id} className="neo-brutalism-card flex flex-col">
             <div className="neo-brutalism-header font-mono text-sm">
               <time dateTime={post.date}>
@@ -88,7 +107,7 @@ export function Home() {
         ))}
       </div>
       
-      {posts.length === 0 && (
+      {filteredPosts.length === 0 && (
         <div className="text-center py-12 text-gray-500 border-3 border-dashed border-gray-300 rounded-sm">
           No posts found. Start writing!
         </div>
