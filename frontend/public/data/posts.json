@@ -1,8 +1,84 @@
 [
   {
-    "id": "model agent的context管理综述",
-    "slug": "model agent的context管理综述",
-    "title": "Modern Agent的context管理综述",
+    "id": "coming_soon/理论基础one page",
+    "slug": "coming_soon/理论基础one page",
+    "title": "LLM 理论one page",
+    "date": "2026-04-10T12:05:00.000Z",
+    "categories": [
+      "理论"
+    ],
+    "tags": [
+      "基础"
+    ],
+    "excerpt": "coming soon...",
+    "wordCount": 2,
+    "readingTime": 1
+  },
+  {
+    "id": "coming_soon/参数生成入门",
+    "slug": "coming_soon/参数生成入门",
+    "title": "参数生成入门",
+    "date": "2026-04-10T12:00:00.000Z",
+    "categories": [
+      "理论"
+    ],
+    "tags": [
+      "参数生成"
+    ],
+    "excerpt": "coming soon...",
+    "wordCount": 2,
+    "readingTime": 1
+  },
+  {
+    "id": "coming_soon/AAFM",
+    "slug": "coming_soon/AAFM",
+    "title": "Adaptive agent foundation model",
+    "date": "2026-04-09T10:00:00.000Z",
+    "categories": [
+      "工作分享"
+    ],
+    "tags": [
+      "Agentic postrain",
+      "RL"
+    ],
+    "excerpt": "coming soon...",
+    "wordCount": 2,
+    "readingTime": 1
+  },
+  {
+    "id": "coming_soon/Search More Think Less",
+    "slug": "coming_soon/Search More Think Less",
+    "title": "AAFM",
+    "date": "2026-04-09T10:00:00.000Z",
+    "categories": [
+      "工作分享"
+    ],
+    "tags": [
+      "Agentic postrain"
+    ],
+    "excerpt": "coming soon...",
+    "wordCount": 2,
+    "readingTime": 1
+  },
+  {
+    "id": "coming_soon/acadreason",
+    "slug": "coming_soon/acadreason",
+    "title": "Acadreason",
+    "date": "2026-04-09T10:00:00.000Z",
+    "categories": [
+      "工作分享"
+    ],
+    "tags": [
+      "benchmark"
+    ],
+    "excerpt": "coming soon...",
+    "wordCount": 2,
+    "readingTime": 1
+  },
+  {
+    "id": "coming_soon/model agent的context管理综述",
+    "slug": "coming_soon/model agent的context管理综述",
+    "title": "Modern Agent的context管理",
     "date": "2026-04-09T10:00:00.000Z",
     "categories": [
       "分享"
@@ -11,19 +87,36 @@
       "memory",
       "context"
     ],
-    "excerpt": "coming soon...",
+    "excerpt": "> 本文通过拆解两个代表性的 Agent 系统——OpenClaw 和 Hermes Agent，从四个维度剖析 modern agent 的 context 管理机制。\n\n\n一个完整的 agent loop 大致可以概括为：接收消息 → 上下文组装 → 模型推理 → 工具执行 → 流式响应 → 持...",
+    "wordCount": 4537,
+    "readingTime": 16
+  },
+  {
+    "id": "coming_soon/ai时代的信息摄入",
+    "slug": "coming_soon/ai时代的信息摄入",
+    "title": "ai时代的信息摄入",
+    "date": "2026-04-08T23:30:00.000Z",
+    "categories": [
+      "insight"
+    ],
+    "tags": [
+      "随笔"
+    ],
+    "excerpt": "coming soon",
     "wordCount": 2,
     "readingTime": 1
   },
   {
-    "id": "博客已搭建完成",
-    "slug": "博客已搭建完成",
+    "id": "completed/博客已搭建完成",
+    "slug": "completed/博客已搭建完成",
     "title": "👋 欢迎来到这里",
     "date": "2026-04-08T23:30:00.000Z",
     "categories": [
       "建站"
     ],
-    "tags": [],
+    "tags": [
+      "随笔"
+    ],
     "excerpt": "我是Liam，北邮的一名研二学生，2025年3月开始做Agent相关的research，对 AGI 的未来充满好奇和热情。\n\n2026 年 4 月 9 日，我搭建了这个博客。想用文字记录在 AI 时代阶段性的思考与困惑。\n\n欢迎随时留言交流，一起在浪潮中摸索前行。",
     "wordCount": 87,
     "readingTime": 1
